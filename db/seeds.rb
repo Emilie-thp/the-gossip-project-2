@@ -19,18 +19,19 @@ Comment.destroy_all
 Like.destroy_all
 
 # building cities (requires nothing)
-10.times do
+	city = ['Paris','Bourges','Lyon','Orléans', 'Vierzon', 'Bordeaux','Strasbourg','Rouen','Nantes','Rennes','Reims','Caen','Brest','Toulouse','Montpellier','Bazouger','Lille','Calais']
+	city.each do |city|
   City.create(
-  	name: Faker::Address.unique.city, 
-  	zip_code: Faker::Address.unique.zip
+  	name: city, 
+  	zip_code: rand(18000..97000)
   	)
-end
+	end
 
 # create some users (requires cities)
 10.times do
   name = Faker::FunnyName.unique.two_word_name
   name = name.split(' ')
-  description = Faker::Lorem.sentence(word_count: 10,random_words_to_add: 5)
+  description = Faker::TvShows::RuPaul.quote
   email = Faker::Internet.unique.safe_email(name: name)
   age = rand(16..70)
   password = Faker::Internet.password
@@ -49,7 +50,7 @@ end
 20.times do
   title = Faker::Book.unique.title
   sentences = rand(3..8)
-  content = ([Faker::Lorem.sentence(word_count: 5,random_words_to_add: 15)] * sentences).join(' ')
+  content = Faker::TvShows::NewGirl.quote
   user = rand(1..10)
   Gossip.create(
   	title: title, 
@@ -94,7 +95,7 @@ end
 
 # creating comments on gossips (requires users and gossips)
 20.times do
-  content = Faker::Lorem.sentence(word_count: 8)
+  content = Faker::TvShows::RickAndMorty.quote
   Comment.create(user_id: User.all.sample.id, content: content, commentable: Gossip.all.sample)
 end
 

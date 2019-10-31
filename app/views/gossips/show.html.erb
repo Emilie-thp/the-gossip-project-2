@@ -79,7 +79,7 @@
       </div>
       <div class="card-body align-center">
         <blockquote class="blockquote mb-0">
-          <p>by <%=User.find(comment.user_id).first_name%></p>
+          <p>by <%= link_to User.find(comment.user_id).first_name, user_path(User.find(comment.user_id).id)%></p>
           <footer class="blockquote-footer">
           <div class="row justify-content-between align-self-center mx-3">
             <p><%=comment.content%></p>
