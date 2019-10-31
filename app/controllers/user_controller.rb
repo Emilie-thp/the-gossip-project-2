@@ -10,20 +10,27 @@ class UserController < ApplicationController
   end
 
   def create 
-  	@user = User.new('first_name' => params[:first_name],
+    @city = City.find_by(name: params[:city_name])
+      if @city == nil 
+        @city = City.create(name:params[:city_name], zip_code:"53270")
+      else
+    @user = User.new('first_name' => params[:first_name],
   									 'last_name' => params[:last_name],
   									 'description' => params[:description],
   									 'age' => params[:age],
-  									 'city_id' => City.first.id,
+  									 'city_id' => @city.id,
   									 'email' => params[:email],
   									 'password' => params[:password_digest])
+      end
+
   		if @user.save
          log_in(@user)
-  			 render "welcome/index"
          flash[:success] = "Inscription réussie !"
+  			 render "welcome/index"
   		else
   		  render "new"
   		end
+  
   end
 
 end

@@ -16,8 +16,11 @@
 
 		</br>
 
-    <%=flash[:success]%>
-
+ <% if flash[:success] %>
+      <div class="alert alert-success" role="alert"><%= flash[:success] %></div>
+ <% elsif flash[:danger] %>
+      <div class="alert alert-danger" role="alert"><%= flash[:danger] %></div>
+   <% end %>
           <h2 class="h1-responsive font-weight-bold my-5">Voici les potins en stock, régale-toi...</h2>
 
 

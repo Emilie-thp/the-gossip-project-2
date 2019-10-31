@@ -19,15 +19,16 @@ class GossipsController < ApplicationController
                   			 )
     @gossip.user = current_user
    		if @gossip.save # essaie de sauvegarder en base @gossip
-     		 flash[:success] = "Nouveau gossip bien crée !"
+     		 flash[:success] = "Nouveau gossip bien créé !"
          render "welcome/index"
 	    else
-  		   render "new"
+   		   render "new"
     	end
   end
 
   def edit 
     @gossip = Gossip.find(params[:id])
+
   end
 
 
@@ -35,7 +36,9 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
     if @gossip.update(title: params[:title],
                       content: params[:content])
-      redirect_to gossip_path
+      flash[:success] = "Le gossip n°#{@gossip.id} a bien été modifié !"
+      render "welcome/index"
+
     else
       render :edit
     end
@@ -45,6 +48,7 @@ class GossipsController < ApplicationController
   def destroy 
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
+    flash[:danger] = "Le gossip n°#{@gossip.id} a bien été supprimé !"
     render "welcome/index"
   end
 
