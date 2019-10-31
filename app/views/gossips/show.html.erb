@@ -50,9 +50,39 @@
 
 		<div style="margin-left: 35px">
   		<strong class="d-block text-gray-dark">AJOUTER UN COMMENTAIRE</strong>
+    </br>
         <%= form_tag gossip_comments_path(@gossip.id), method: "post" do %>
         <%= label_tag 'Ajouter un commentaire :' %>
    			<%= text_field_tag(:content)%>
 			  <%= submit_tag "Valider", class: "btn btn-info btn" %>
 			    <% end %>
    	</div>
+
+   </br>
+   </br>
+   
+    <section>
+    <div class="card-deck">
+    <%Comment.all.each do |comment|%>
+    <%if comment.commentable_id == @gossip.id%>
+    <div class="col-sm-4 mb-3">
+    <div class="card">
+      <div class="card-header">
+        Comment #<%=comment.id%>
+      </div>
+      <div class="card-body align-center">
+        <blockquote class="blockquote mb-0">
+          <p>by <%=User.find(comment.user_id).first_name%></p>
+          <footer class="blockquote-footer">
+          <div class="row justify-content-between align-self-center mx-3">
+            <p><%=comment.content%></p>
+           </div>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+    </div>
+    <%end%>
+    <%end%>
+    </div>
+    </section>

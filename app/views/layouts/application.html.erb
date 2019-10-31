@@ -19,29 +19,37 @@
 
     <body>
 
-      <!-- Navigation bar-->
+            <!-- Navigation bar-->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Menu</a>
+        <a class="navbar-brand" <%= link_to "GossipProject", welcome_index_path %> </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" <%= link_to "Accueil", welcome_index_path(:id) %> </a>
+            <a class="nav-link" <%= link_to "Accueil", welcome_index_path %> </a>
             <a class="nav-link"<%= link_to "Equipe", team_index_path %> </a>
             <a class ="nav-link"<%= link_to "Contact",contact_index_path %></a>
-            <a class ="nav-link"<%= link_to "Nouveau gossip",new_gossip_path %></a>
-            <a class ="nav-link"<%= link_to "Inscription",new_user_path %></a>
-            <a class ="nav-link"<%= link_to "Connexion",new_session_path %></a>
-            <a class ="nav-link"<%= link_to "Déconnexion", session_path(session.id), method: :delete %></a>
-
           </div>
+        </div>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Inscription / Connexion
+          </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="<%= new_user_path %>">Inscription</a>
+              <a class="dropdown-item" href="<%= new_session_path %>">Connexion</a>
+              <a class="dropdown-item" <%= link_to "Se déconnecter", session_path(session.id), method: :delete %></a>
+            </div>
         </div>
       </nav>
 
     <%= yield %>
   
     </body>
+
+
+
 
  <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -6,10 +6,11 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = Comment.new('content' => params[:content],
-                  			 	 'user_id' => 51,
                   			 	 'commentable_type' => "Gossip",
                   			 	 'commentable_id' => params[:gossip_id]
                   			  )
+    @comment.user = current_user
+
    		if @comment.save # essaie de sauvegarder en base @gossip
      		 redirect_to gossip_path(params[:gossip_id])
      	else

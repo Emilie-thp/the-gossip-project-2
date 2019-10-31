@@ -3,10 +3,12 @@
 
 <body>
 
+   <div class="border border-light p-5">
+	  
+	  <div class="container">
 
 	  <p class="h4 mb-4"> Pour créer un nouveau gossip, remplissez le formulaire ci-dessous </p>
 
-	  
 	    <%= form_tag url_for(action: 'create'), method: "post" do %>
 
 					<% if @gossip.errors.any? %>
@@ -21,16 +23,20 @@
 							</div>
 
 		      <%= label_tag 'Titre du gossip :' %>
-		      <%= text_field_tag(:title)%>
-		      <br /> <br />
+		      <%= text_field_tag 'title', nil, class: "form-control mb-4"%>
 
 		      <%= label_tag 'Dîtes-nous tout :' %>
-		      <%= text_field_tag(:content)%>
-		      <br /> <br />
+		      <%= text_field_tag 'content', nil, class: "form-control mb-2"%>
+
+		     	</br>
 		  
-		      <%= submit_tag "Valider" %>
+		      <%= submit_tag "Valider", class: "btn btn-info btn-block" %>
 
 	    <% end %>
+
+	  </div>
+
+    </div>
 
 	  
 

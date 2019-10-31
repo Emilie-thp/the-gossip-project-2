@@ -1,6 +1,12 @@
 
 <div class = "jumbotron">
-	<h1>Bienvenue <%= @first_name %> sur The Gossip Project</h1>
+
+  <% if logged_in?%>
+    <h1>Bienvenue <%= User.find_by(id:session[:user_id]).first_name %> !</h1>
+  <%else%>
+    <h1>Bienvenue sur The Gossip Project !</h1>
+  <%end%>
+
 		<h4>Viens assouvir tes plus basses pulsions et bitcher sur tes "potes".</h4>
 		</br>
 			<p class = "center">Pour contribuer, toi aussi, à la destruction de la vie privée et créer un nouveau gossip, <a> <%= link_to "c'est ici !", new_gossip_path %> </a> </p>
@@ -9,6 +15,8 @@
 </div>
 
 		</br>
+
+    <%=flash[:success]%>
 
           <h2 class="h1-responsive font-weight-bold my-5">Voici les potins en stock, régale-toi...</h2>
 

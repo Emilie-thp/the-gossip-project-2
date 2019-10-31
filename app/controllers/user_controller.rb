@@ -18,7 +18,9 @@ class UserController < ApplicationController
   									 'email' => params[:email],
   									 'password' => params[:password_digest])
   		if @user.save
-  			render "welcome/index"
+         log_in(@user)
+  			 render "welcome/index"
+         flash[:success] = "Inscription réussie !"
   		else
   		  render "new"
   		end

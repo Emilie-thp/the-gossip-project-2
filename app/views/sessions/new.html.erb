@@ -1,9 +1,14 @@
 <h2 class="h1-responsive font-weight-bold my-5">Page de connexion</h2>
 
+  
 
 <body>
  
    <div class=" border border-light p-5">
+
+   <% if flash[:danger] %>
+      <div class="alert alert-primary" role="alert"><%= flash[:danger] %></div>
+   <% end %>
 
      <p class="h4 mb-4">Pour te connecter, complète tes informations ci-dessous :</p>
 
