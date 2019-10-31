@@ -13,10 +13,11 @@ class GossipsController < ApplicationController
   def create 
  		@gossip = Gossip.new('title' => params[:title],
                   			 'content' => params[:content],
-                  			 'user_id' => 51
                   			 )
+    @gossip.user = current_user
    		if @gossip.save # essaie de sauvegarder en base @gossip
-     		 render "welcome/index"
+     		 flash[:success] = "Nouveau gossip bien crée !"
+         render "welcome/index"
 	    else
   		   render "new"
     	end

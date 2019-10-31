@@ -30,7 +30,11 @@
             <a class="nav-link" <%= link_to "Accueil", welcome_index_path(:id) %> </a>
             <a class="nav-link"<%= link_to "Equipe", team_index_path %> </a>
             <a class ="nav-link"<%= link_to "Contact",contact_index_path %></a>
-             <a class ="nav-link"<%= link_to "Nouveau gossip",new_gossip_path %></a>
+            <a class ="nav-link"<%= link_to "Nouveau gossip",new_gossip_path %></a>
+            <a class ="nav-link"<%= link_to "Inscription",new_user_path %></a>
+            <a class ="nav-link"<%= link_to "Connexion",new_session_path %></a>
+            <a class ="nav-link"<%= link_to "Déconnexion", session_path(session.id), method: :delete %></a>
+
           </div>
         </div>
       </nav>

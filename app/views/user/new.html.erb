@@ -1,0 +1,43 @@
+<h2 class="h1-responsive font-weight-bold my-5">Page d'inscrption</h2>
+
+
+<body>
+ 
+   <div class=" border border-light p-5">
+
+     <p class="h4 mb-4">Pour t'inscrire, complète le formulaire suivant :</p>
+
+        <%= form_tag url_for(action: 'create'), method: "post" do %>
+        
+        <p><%= label_tag 'Prénom :' %></p>
+        <%= text_field_tag 'first_name', nil, class: "form-control mb-4" %>
+    
+        <p><%= label_tag 'Nom :' %></p>
+        <%= text_field_tag 'last_name', nil,  class: "form-control mb-2"%>
+
+        <p><%= label_tag 'Description :' %></p>
+        <%= text_field_tag 'description', nil,  class: "form-control mb-2"%>
+
+        <p><%= label_tag 'Age :' %></p>
+        <%= text_field_tag 'age', nil,  class: "form-control mb-2"%>
+
+        <p><%= label_tag 'Ville :' %></p>
+        <%= text_field_tag 'city_name', nil,  class: "form-control mb-2"%>
+
+        <p><%= label_tag 'E-mail :' %></p>
+        <%= text_field_tag 'email', nil,  class: "form-control mb-2"%>
+
+        <p><%= label_tag 'Mot de passe :' %></p>
+        <%= text_field_tag 'password_digest', nil,  class: "form-control mb-2"%>
+           
+           </br>
+
+        <%= submit_tag "Valider", class: "btn btn-info btn-block" %>
+
+      <% end %>
+    </div>
+
+
+</body>
+
+

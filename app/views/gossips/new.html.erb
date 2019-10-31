@@ -3,7 +3,6 @@
 
 <body>
 
-	<div class=" border border-light p-5">
 
 	  <p class="h4 mb-4"> Pour créer un nouveau gossip, remplissez le formulaire ci-dessous </p>
 
@@ -21,7 +20,6 @@
 									<% end %>			
 							</div>
 
-				<div style="margin-left: 60px">
 		      <%= label_tag 'Titre du gossip :' %>
 		      <%= text_field_tag(:title)%>
 		      <br /> <br />
@@ -30,13 +28,11 @@
 		      <%= text_field_tag(:content)%>
 		      <br /> <br />
 		  
-		      <%= submit_tag "Valider", class: "btn btn-info btn" %>
-				</div>
+		      <%= submit_tag "Valider" %>
 
 	    <% end %>
 
 	  
 
-	</div>
 
 </body>
