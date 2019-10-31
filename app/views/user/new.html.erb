@@ -5,6 +5,11 @@
  
    <div class=" border border-light p-5">
 
+        <% if flash[:danger] %>
+          <div class="alert alert-danger" role="alert"><%= flash[:danger] %></div>
+        <% end %>
+
+
      <p class="h4 mb-4">Pour t'inscrire, complète le formulaire suivant :</p>
 
         <%= form_tag url_for(action: 'create'), method: "post" do %>

@@ -33,13 +33,15 @@ end
   description = Faker::Lorem.sentence(word_count: 10,random_words_to_add: 5)
   email = Faker::Internet.unique.safe_email(name: name)
   age = rand(16..70)
+  password = Faker::Internet.password
   User.create(
   	first_name: name[0], 
   	last_name: name[1],
   	description: description, 
   	email: email, 
   	age: age,
-  	city_id: City.all.sample.id
+  	city_id: City.all.sample.id,
+    password_digest: password
   	)
 end
 

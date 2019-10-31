@@ -28,6 +28,7 @@ class UserController < ApplicationController
          flash[:success] = "Inscription réussie ! Vous êtes connecté en tant que #{@user.first_name}"
   			 render "welcome/index"
   		else
+        flash[:danger] = "Echec de l'inscription ! Vous n'avez pas rempli tous les champs."
   		  render "new"
   		end
   
