@@ -32,6 +32,8 @@
         </div>
 
 
+      <% if current_user == @gossip.user%>
+ 
         <div class="media text-dark pt-3"> 
           <div class="row">
 						<div class="pull-left">
@@ -46,6 +48,11 @@
 						 </div>
        		</div>
        	</div>
+
+     <%end%>
+
+
+
 	  </div>
 
 		<div style="margin-left: 35px">
