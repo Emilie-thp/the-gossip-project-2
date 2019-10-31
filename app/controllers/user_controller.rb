@@ -25,7 +25,7 @@ class UserController < ApplicationController
 
   		if @user.save
          log_in(@user)
-         flash[:success] = "Inscription réussie !"
+         flash[:success] = "Inscription réussie ! Vous êtes connecté en tant que #{@user.first_name}"
   			 render "welcome/index"
   		else
   		  render "new"
