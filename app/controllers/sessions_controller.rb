@@ -9,6 +9,10 @@ class SessionsController < ApplicationController
 	
 			if user && user.authenticate(params[:password])
 				log_in(user)
+
+				#pour enregistrer les cookies à chaque création d'une session (=connexion)
+		    remember(user)
+
 				flash[:success] = "Connexion résussie"
 				render "welcome/index"
 			else 
@@ -18,9 +22,8 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-    puts "*" * 60
+    forget(current_user)
     session.delete(:user_id)
-    puts "*" * 60
     flash[:success] = "Deconnexion réussie"
 		render "welcome/index"
   end
